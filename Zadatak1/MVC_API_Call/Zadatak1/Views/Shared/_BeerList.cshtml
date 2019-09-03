@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Zadatak1.Models.Beer>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_Url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First_Brewed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Food_Pairing)
+        </th>
+    </tr>
+
+    @foreach (var beer in Model)
+    {
+        @Html.Partial("_Beer", beer);
+    }
+</table>

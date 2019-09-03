@@ -1,0 +1,39 @@
+﻿@model Zadatak1.Models.Beer
+
+@{
+    ViewBag.Title = "Recommend a beer";
+}
+
+<h2>Recommend a beer</h2>
+
+
+<div class="form-inline">
+    <div class="form-group row">
+        <div class="col-sm-8">
+            <button id="btnGetRandomBeer" class="btn btn-success">Recommend me a beer</button>
+        </div>
+    </div>
+</div>
+
+<div class="lds-hourglass" id="loading" style="display:none"></div>
+
+<div id="beer">
+</div>
+
+@section scripts {
+    <script>
+        $('#btnGetRandomBeer').click((e) => {
+            e.preventDefault();
+            $('#beer').hide();
+            $.ajax({
+                url: '@Url.Action("GetRandomBeer")',
+                method: 'GET',
+                cache: false,
+                dataType: 'html',
+                success: function (partialView) {
+                    $("#beer").html(partialView).fadeIn(800);
+                }
+            });
+        });
+    </script>
+}
